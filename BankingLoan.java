@@ -138,29 +138,50 @@ public class BankingLoan
 {
     public static void main(String[] args)
     {
-        PersonalLoan pl = new PersonalLoan();
-        pl.input();
-        pl.display();
-        pl.input2();
-        pl.compute();
-        pl.display2();
-        EducationalLoan el = new EducationalLoan();
-        el.input();
-        el.display();
-        el.input2();
-        el.compute();
-        el.display2();
-        HomeLoan hl = new HomeLoan();
-        hl.input();
-        hl.display();
-        hl.input2();
-        hl.compute();
-        hl.display2();
-        CarLoan cl = new CarLoan();
-        cl.input();
-        cl.display();
-        cl.input2();
-        cl.compute();
-        cl.display2();
+        Scanner sc = new Scanner(System.in);
+        Loan selectedLoan = null;
+        System.out.println("=======Available loans=======");
+        System.out.println("1. Personal Loan ");
+        System.out.println("2. Education Loan ");
+        System.out.println("3. Home Loan ");
+        System.out.println("4. Car Loan ");
+        int choice = sc.nextInt();
+        switch(choice)
+        {
+            case 1:
+            {
+                selectedLoan = new PersonalLoan();
+                break;
+            }
+            case 2:
+            {
+                selectedLoan = new EducationalLoan();
+                break;
+            }
+            case 3:
+            {
+                selectedLoan = new HomeLoan();
+                break;
+            }
+            case 4:
+            {
+                selectedLoan = new CarLoan();
+                break;
+            }
+            default:
+            {
+                System.out.println("Invalid option!");
+                System.out.println("We are sorry can't find the loan");
+            }
+        }
+        if(selectedLoan != null)
+        {
+            selectedLoan.input();
+            selectedLoan.display();
+            selectedLoan.input2();
+            selectedLoan.compute();
+            selectedLoan.display2();
+        }
+        sc.close();
     }
 }
